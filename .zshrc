@@ -100,6 +100,8 @@ alias gl="git log"
 alias gd="git diff"
 alias gba="git branch -a"
 alias gaa="git add ."
+# config files repo
+alias cfgit="/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME"
 
 # FUNCTIONS
 
@@ -122,11 +124,3 @@ zle -N zle-keymap-select
 export PATH=/home/valenber/.cargo/bin:${PATH}
 
 source $ZSH/oh-my-zsh.sh
-alias cfgit='/usr/bin/git --git-dir=/home/valenber/.cfg/ --work-tree=/home/valenber'
-alias cfgit='/usr/bin/git --git-dir=/home/valenber/.cfg/ --work-tree=/home/valenber'
-alias cfgit='/usr/bin/git --git-dir=/home/valenber/.cfg/ --work-tree=/home/valenber'
-alias cfgit='/usr/bin/git --git-dir=/home/valenber/.cfg/ --work-tree=/home/valenber'
-alias cfgit='/usr/bin/git --git-dir=/home/valenber/.cfg/ --work-tree=/home/valenber'
-alias cfgit='/usr/bin/git --git-dir=/home/valenber/.cfg/ --work-tree=/home/valenber'
-alias cfgit='/usr/bin/git --git-dir=/home/valenber/.cfg/ --work-tree=/home/valenber'
-alias cfgit='/usr/bin/git --git-dir=/home/valenber/.cfg/ --work-tree=/home/valenber'
