@@ -54,7 +54,7 @@ git config --global init.defaultBranch main
 
 echo Installing rust packages
 echo ========================
-cargo install lsd
+cargo install lsd git-delta
 echo
 
 echo Installing packages version manager
