@@ -44,7 +44,7 @@ echo
 
 echo Installing APT packages
 echo =======================
-sudo apt-get install git curl tmux neovim bat tldr jq ranger ssh chromium-browser gpt gpg fzf yarn
+sudo apt-get install git curl tmux neovim bat tldr jq ranger ssh chromium-browser gpt gpg fzf yarn tree
 sudo apt-get install cargo
 echo
 

@@ -1,0 +1,41 @@
+{
+  "suggest.echodocSupport": true,
+  "suggest.maxCompleteItemCount": 16,
+  "coc.preferences.formatOnSaveFiletypes": [
+    "sass",
+    "scss",
+    "javascript",
+    "javascript.jsx",
+    "jsx",
+    "json",
+    "js",
+    "ts",
+    "tsx",
+    "vue",
+    "html",
+    "Markdown",
+    "typescript",
+    "typescriptreact",
+    "javascriptreact",
+    "typescript.tsx",
+    "graphql"
+  ],
+  "diagnostic.errorSign": "E",
+  "diagnostic.warningSign": "W",
+  "diagnostic.hintSign": "H",
+  "diagnostic.infoSign": "I",
+
+  "stylelintplus.autoFixOnSave": true,
+
+  "prettier.eslintIntegration": true,
+  "prettier.stylelintIntegration": true,
+
+  "eslint.autoFixOnSave": true,
+
+  "tsserver.trace.server": "verbose",
+  "tsserver.formatOnType": true,
+  "snippets.userSnippetsDirectory": "~/.config/coc/user-snippets/",
+  "snippets.extends": {
+    "typescriptreact": ["typescript"]
+  }
+}
