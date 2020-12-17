@@ -1,0 +1,29 @@
+#!/bin/bash
+# this script creates a tmux setup for development
+# it expects a name for the session
+# if name is not provided it uses the name of the directory from which it was called
+if [ -z "$1" ]; then
+  IFS="/"
+  read -ra pwd_array <<< $(pwd)
+  len=${#pwd_array[@]}
+  SESSION=${pwd_array[$len - 1]}
+else
+  SESSION=$1
+fi
+  # tmux session configuration
+  tmux new-session -d -s $SESSION
+
+  tmux rename-window -t $SESSION:1 'IDE'
+  tmux splitw -h -p 15
+
+  tmux new-window -t $SESSION:2 -n 'FILES'
+  tmux select-window -t $SESSION:2
+  tmux send-keys 'ranger' C-m
+
+  tmux new-window -t $SESSION:3 -n 'TERM'
+  tmux select-window -t $SESSION:3
+  tmux send-keys 'git pull && git status' C-m
+
+  tmux select-window -t $SESSION:1
+
+  tmux attach -t $SESSION
