@@ -1,0 +1,153 @@
+#!/bin/bash
+
+echo Installing zsh
+echo ==============
+if [ `echo $SHELL` != "/usr/bin/zsh" ]; then
+	sudo apt install zsh
+	chsh -s $(which zsh)
+	echo Please re-login to update shell settings
+else
+	echo Already running zsh
+fi
+echo
+
+echo Installing Oh My Zsh
+echo ====================
+if [ `echo $ZSH` != `echo $HOME/.oh-my-zsh` ]; then
+	sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+	echo Installed Oh My Zsh. Please source .zshrc
+else
+	echo Already running Oh My Zsh
+fi
+echo
+
+echo Installing OhMyZsh plugins
+echo ==========================
+
+if [ ! -d ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting ]; then
+	echo installing zsh-syntax-highlighting
+	git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+else
+	echo zsh-syntax-highlighting is already installed
+fi
+echo
+
+echo Updating APT
+echo ===============
+sudo apt-get update
+echo
+
+echo Installing APT packages
+echo =======================
+sudo apt-get install git curl tmux neovim bat tldr jq ranger ssh chromium-browser gpt gpg fzf
+sudo apt-get install cargo
+echo
+
+echo Git configuration
+echo =================
+git config --global init.defaultBranch main
+
+echo Installing rust packages
+echo ========================
+cargo install lsd
+echo
+
+echo Installing packages version manager
+echo ===================================
+# asdf allows to manage different language-specific packages
+# https://asdf-vm.com/#/core-manage-asdf
+if [ ! -d ~/.asdf ]; then
+	echo Installing asdf
+	git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.8.0
+else
+	echo Already have asdf installed
+fi
+echo
+
+echo Updating asdf
+echo -------------
+asdf update
+echo
+echo Installing asdf-nodejs plugin
+echo -----------------------------
+asdf plugin add nodejs
+echo
+
+echo In order to install nodejs runtime with asdf we need GPG keys of NodeJS team
+read -p "Do you want to import those keys? [y/N] " NODE_KEYS_REPLY
+
+if [[ $NODE_KEYS_REPLY =~ ^[Yy](es)$ ]]; then
+	echo Please confirm the ones you want to import
+	echo ------------------------------------------
+
+# source: https://github.com/nodejs/node#release-keys
+TEAM_EMAILS="bgriggs@redhat.com \
+	adamzdanielle@gmail.com \
+	jasnell@keybase.io \
+	myles.borins@gmail.com \
+	targos@protonmail.com \
+	rlau@redhat.com \
+	rod@vagg.org \
+	ruben@bridgewater.de \
+	ruyadorno@hotmail.com \
+	shelley.vohr@gmail.com \
+	cjihrig@gmail.com"
+
+for email in $TEAM_EMAILS; do
+	yes | gpg --keyserver hkp://p80.pool.sks-keyservers.net:80 --search $email
+done
+else
+	echo Skipping GPG keys import
+fi
+echo
+
+echo Installing node
+echo ---------------
+asdf install nodejs latest
+LATEST_NODE_VERSION=$(asdf list nodejs | tail -1)
+asdf global nodejs $LATEST_NODE_VERSION
+echo "active node version is set to $(node --version)"
+echo
+
+echo SSH keys
+echo ========
+
+if find ~/.ssh -mindepth 1 | read; then
+  echo Configured already
+	echo ------------------
+else
+  echo No keys detected
+  echo ----------------
+
+	# TODO: ask if we want to create keys
+
+	ssh-keygen -o -a 100 -t ed25519 -f ~/.ssh/provisioned_id_ed25519 -C "$(whoami)@$(hostname)"
+	ssh-add ~/.ssh/provisioned_id_ed25519
+	echo The new key is added to ssh-agent
+	echo Add the following public key to your github/gitlab account
+	cat ~/.ssh/provisioned_id_ed25519.pub
+fi
+echo
+
+echo Bare repo for config files
+echo ==========================
+
+if [[ ! -d $HOME/.cfg ]]; then
+	echo Cloning the repo
+	echo ----------------
+
+	git clone --bare git@github.com:valenber/dotfiles.git $HOME/.cfg
+
+	CFGIT="/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME"
+
+# TODO: add warning that the current files will be overwritten
+
+ echo `${CFGIT} checkout -f`
+ echo `${CFGIT} config --local status.showUntrackedFiles no`
+else
+	echo Already there
+	echo -------------
+fi
+
+# TODO: Make custom scripts executable e.g. develop
+
