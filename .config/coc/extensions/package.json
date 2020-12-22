@@ -6,6 +6,6 @@
     "coc-pairs": ">=1.2.21",
     "coc-prettier": ">=1.1.20",
     "coc-snippets": ">=2.3.1",
-    "coc-tsserver": ">=1.6.4"
+    "coc-tsserver": ">=1.6.6"
   }
 }

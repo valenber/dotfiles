@@ -106,17 +106,17 @@ alias cfgit="/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME"
 # FUNCTIONS
 
 # vi input mode for command line prompt
-bindkey -v
-bindkey -M viins 'jk' vi-cmd-mode
+# bindkey -v
+# bindkey -M viins 'jk' vi-cmd-mode
 
-function zle-line-init zle-keymap-select {
-    RPS1="${${KEYMAP/vicmd/[NORM]}/(main|viins)/[INS]}"
-    RPS2=$RPS1
-    zle reset-prompt
-}
+# function zle-line-init zle-keymap-select {
+#     RPS1="${${KEYMAP/vicmd/[NORM]}/(main|viins)/[INS]}"
+#     RPS2=$RPS1
+#     zle reset-prompt
+# }
 
-zle -N zle-line-init
-zle -N zle-keymap-select
+# zle -N zle-line-init
+# zle -N zle-keymap-select
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 

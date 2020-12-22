@@ -13,7 +13,7 @@ echo
 
 echo Installing Oh My Zsh
 echo ====================
-if [ `echo $ZSH` != `echo $HOME/.oh-my-zsh` ]; then
+if [ ! -d ~/.oh-my-zsh ]; then
 	sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 	echo Installed Oh My Zsh. Please source .zshrc
 else
@@ -137,6 +137,7 @@ echo
 
 echo Bare repo for config files
 echo ==========================
+echo If cloning fails make sure the new SSH key is added to your Github profile
 
 if [[ ! -d $HOME/.cfg ]]; then
 	echo Cloning the repo
@@ -149,7 +150,9 @@ if [[ ! -d $HOME/.cfg ]]; then
 # TODO: add warning that the current files will be overwritten
 
  echo `${CFGIT} checkout -f`
+ echo `${CFGIT} branch -u origin/main`
  echo `${CFGIT} config --local status.showUntrackedFiles no`
+ echo Restart shell for the changes to take place
 else
 	echo Already there
 	echo -------------
