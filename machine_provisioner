@@ -160,3 +160,14 @@ fi
 
 # TODO: Make custom scripts executable e.g. develop
 
+echo Fira Code NF font
+echo =================
+wget https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/FiraCode.zip -P $HOME/Downloads/
+unzip $HOME/Downloads/FiraCode.zip
+sudo cp $HOME/Downloads/FiraCode/Fira*.otf /usr/share/fonts/
+rm -rf $HOME/Downloads/FiraCode/
+rm $HOME/Downloads/FiraCode.zip
+
+echo OneDark theme for gnome terminal
+echo ================================
+bash -c "$(curl -fsSL https://raw.githubusercontent.com/denysdovhan/gnome-terminal-one/master/one-dark.sh)"

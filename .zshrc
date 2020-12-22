@@ -121,6 +121,9 @@ alias cfgit="/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # adding Rust binaries installed with cargo package manager to PATH
-export PATH=/home/valenber/.cargo/bin:${PATH}
+export PATH=$HOME/.cargo/bin:${PATH}
+#
+# adding private binaries to PATH
+export PATH=$HOME/.local/bin:${PATH}
 
 source $ZSH/oh-my-zsh.sh
