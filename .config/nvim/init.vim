@@ -129,6 +129,8 @@ source $HOME/.config/nvim/plug-config/key-bindings.vim
 source $HOME/.config/nvim/plug-config/quickscope.vim
 source $HOME/.config/nvim/plug-config/rnvimr.vim
 
+source $HOME/.config/nvim/themes/airline.vim
+
 " VISUALS
 " -------
 if exists('+termguicolors')
