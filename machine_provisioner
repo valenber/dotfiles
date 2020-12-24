@@ -44,18 +44,23 @@ echo
 
 echo Installing APT packages
 echo =======================
-sudo apt-get install git curl tmux neovim bat tldr jq ranger ssh chromium-browser gpt gpg fzf yarn tree
+sudo apt-get install git curl tmux neovim bat tldr jq ranger ssh chromium-browser gpt gpg fzf yarn tree highlight python3 python3-pip
 sudo apt-get install cargo
 echo
 
-echo Git configuration
-echo =================
-git config --global init.defaultBranch main
+echo Installing Python packages
+echo ==========================
+pip3 install bpytop --upgrade
+echo
 
 echo Installing rust packages
 echo ========================
 cargo install lsd git-delta
 echo
+
+echo Git configuration
+echo =================
+git config --global init.defaultBranch main
 
 echo Installing packages version manager
 echo ===================================
