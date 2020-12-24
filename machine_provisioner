@@ -168,6 +168,10 @@ sudo cp $HOME/Downloads/FiraCode/Fira*.otf /usr/share/fonts/
 rm -rf $HOME/Downloads/FiraCode/
 rm $HOME/Downloads/FiraCode.zip
 
+echo Ranger config
+echo =============
+git clone https://github.com/alexanderjeurissen/ranger_devicons ~/.config/ranger/plugins/ranger_devicons
+
 echo OneDark theme for gnome terminal
 echo ================================
 bash -c "$(curl -fsSL https://raw.githubusercontent.com/denysdovhan/gnome-terminal-one/master/one-dark.sh)"
