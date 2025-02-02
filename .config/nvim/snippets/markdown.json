@@ -1,0 +1,51 @@
+{
+     "Links": {
+          "prefix": [
+               "a",
+               "link"
+          ],
+          "body": [
+               "[${1:label}](${2:url}) ${0}"
+          ],
+          "description": "Add anchor/link"
+     },
+     "Insert code block": {
+          "prefix": "codeblock",
+          "body": [
+               "```${1:language}",
+               "$0",
+               "```"
+          ],
+          "description": "Insert fenced code block"
+     },
+     "Insert 3-column table": {
+          "prefix": "table3",
+          "body": [
+               "| ${1:Column1}  | ${2:Column2}   | ${3:Column3}   |",
+               "|-------------- | -------------- | -------------- |",
+               "| ${4:Item1}    | ${5:Item1}     | ${6:Item1}     |",
+               "${0}"
+          ],
+          "description": "Insert table with 3 columns."
+     },
+     "Insert 2-column table": {
+          "prefix": "table2",
+          "body": [
+               "| ${1:Column1}  | ${2:Column2}   |",
+               "|-------------- | -------------- |",
+               "| ${3:Item1}    | ${4:Item1}     |",
+               "${0}"
+          ],
+          "description": "Insert table with 2 columns."
+     },
+     "Insert 1-column table": {
+          "prefix": "table1",
+          "body": [
+               "| ${1:Column1}  |",
+               "|-------------- |",
+               "| ${2:Item1}    |",
+               "${0}"
+          ],
+          "description": "Insert table with 1 column."
+     }
+}

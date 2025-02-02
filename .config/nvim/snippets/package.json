@@ -1,0 +1,52 @@
+{
+    "name": "custom-snippets",
+    "engines": {
+        "vscode": "^1.11.0"
+    },
+    "contributes": {
+        "snippets": [
+            {
+                "language": [
+                    "plaintext",
+                    "markdown",
+                    "tex",
+                    "html",
+                    "global",
+                    "all"
+                ],
+                "path": "./global.json"
+            },
+            {
+                "language": "markdown",
+                "path": "./markdown.json"
+            },
+            {
+                "language": [
+                    "javascript",
+                    "typescript",
+                    "javascriptreact",
+                    "typescriptreact"
+                ],
+                "path": "./javascript/javascript.json"
+            },
+            {
+                "language": "typescriptreact",
+                "path": "./javascript/react-ts.json"
+            },
+            {
+                "language": [
+                    "css",
+                    "scss",
+                    "sass",
+                    "less",
+                    "stylus"
+                ],
+                "path": "./css.json"
+            },
+            {
+                "language": "html",
+                "path": "./html.json"
+            }
+        ]
+    }
+}

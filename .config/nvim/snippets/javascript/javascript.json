@@ -1,0 +1,52 @@
+{
+    "console.log": {
+        "prefix": "cl",
+        "body": "console.log(${0})"
+    },
+    "console.error": {
+        "prefix": "ce",
+        "body": "console.error(${0})"
+    },
+    "try/catch": {
+        "prefix": "try",
+        "body": "try {\n\t${0}\n} catch (${1:err}) {\n\t\n}",
+        "description": "JS try/catch"
+    },
+    "switch": {
+        "prefix": "switch",
+        "body": [
+            "switch (${1:key}) {",
+            "\tcase ${2:value}:",
+            "\t\t$0",
+            "\t\tbreak;",
+            "",
+            "\tdefault:",
+            "\t\tbreak;",
+            "}"
+        ],
+        "description": "JS switch"
+    },
+    "test": {
+        "prefix": "test",
+        "body": [
+            "test('${1:descr}', () => {",
+            "\t${0}",
+            "})"
+        ],
+        "description": "jest test"
+    },
+    "test todo": {
+        "prefix": "test.todo",
+        "body": "test.todo('${1:descr}')",
+        "description": "jest test todo later"
+    },
+    "test async": {
+        "prefix": "test.async",
+        "body": [
+            "test('${1:descr}', async () => {",
+            "\t${0}",
+            "})"
+        ],
+        "description": "jest test async"
+    }
+}
