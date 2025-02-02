@@ -1,0 +1,7 @@
+{
+     "reactFCwithProps": {
+          "prefix": "rfc",
+          "body": "import { FC, PropsWithChildren } from 'react';\n\nexport interface ${TM_FILENAME_BASE}Props {\n\t${1}\n}\n\nexport const ${TM_FILENAME_BASE}: FC<PropsWithChildren<${TM_FILENAME_BASE}Props>> = ({ ${2} }) => {\n\treturn (${3});\n};${0}",
+          "description": "Creates a React functional component"
+     }
+}
