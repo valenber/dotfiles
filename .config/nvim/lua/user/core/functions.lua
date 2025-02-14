@@ -254,3 +254,27 @@ end
 
 vim.api.nvim_create_user_command("OpenTerminal", OpenTerminal, {})
 keymap("n", "<leader>tt", OpenTerminal, options)
+
+vim.api.nvim_create_autocmd("BufEnter", {
+  callback = function()
+    local function find_project_root()
+      local markers = { ".git", "package.json", "tsconfig.json" }
+      local current = vim.fn.expand("%:p:h")
+
+      while current ~= "/" do
+        for _, marker in ipairs(markers) do
+          if vim.fn.findfile(marker, current) ~= "" or vim.fn.finddir(marker, current) ~= "" then
+            return current
+          end
+        end
+        current = vim.fn.fnamemodify(current, ":h")
+      end
+      return nil
+    end
+
+    local root = find_project_root()
+    if root then
+      vim.cmd("lcd " .. root)
+    end
+  end,
+})
