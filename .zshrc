@@ -15,7 +15,7 @@ fi
 ## General
 alias ls="eza --icons=always -a"
 alias tree="eza --tree --ignore-glob='node_modules|.git'"
-alias gh="cd $HOME"
+alias home="cd $HOME"
 alias gc="cd $HOME/code"
 alias vi="nvim"
 alias lg="lazygit"
@@ -39,7 +39,6 @@ alias tma="tmux attach"
 export ZSH_HIGHLIGHT_HIGHLIGHTERS_DIR=/opt/homebrew/share/zsh-syntax-highlighting/highlighters
 
 source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-. /opt/homebrew/opt/asdf/libexec/asdf.sh
 
 export VOLTA_FEATURE_PNPM=1
 
