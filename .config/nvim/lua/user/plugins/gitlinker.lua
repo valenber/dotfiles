@@ -3,7 +3,10 @@ return {
   config = function()
     require("gitlinker").setup({
       callbacks = {
-        ["gitlab.qonto.co"] = require("gitlinker.hosts").get_gitlab_type_url,
+        ["github.com-qonto"] = function(url_data)
+          url_data.host = "github.com"
+          return require("gitlinker.hosts").get_github_type_url(url_data)
+        end,
       },
     })
   end,
