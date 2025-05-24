@@ -49,7 +49,10 @@ local config = {
     windows = {
       width = 40,
     },
-    provider = vim.fn.hostname() == "cabiBook" and "copilot" or "claude",
+    provider = "copilot",
+    copilot = {
+      model = "claude-3.7-sonnet",
+    },
     claude = {
       api_key_name = "cmd: gpg --decrypt " .. home .. "/.config/nvim/claude.key.gpg",
     },
@@ -97,5 +100,4 @@ local config = {
   },
 }
 
--- this is temporary empty config until I check what's the AI policy is
-return {}
+return config
