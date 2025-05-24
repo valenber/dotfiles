@@ -6,6 +6,8 @@ plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
 
+export MANPAGER="nvim +Man!"
+
 if [ -f $HOME/.secretsrc ]; then
   source $HOME/.secretsrc
 fi
@@ -22,7 +24,7 @@ alias lg="lazygit"
 alias cd="z"
 
 ## Git
-alias gs="git status"
+alias gs="git status --short"
 alias gl="git log"
 alias gg="git log --decorate --graph --oneline --all"
 alias gd="git diff"
@@ -41,5 +43,8 @@ export ZSH_HIGHLIGHT_HIGHLIGHTERS_DIR=/opt/homebrew/share/zsh-syntax-highlightin
 source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 export VOLTA_FEATURE_PNPM=1
+
+# prevent memory heap problems in node on large projects
+export NODE_OPTIONS="--max-old-space-size=8192"
 
 eval "$(zoxide init zsh)"
