@@ -32,3 +32,7 @@ opt.completeopt = "menuone,noselect"
 
 -- search case insensitive esc
 opt.ignorecase = true
+
+vim.diagnostic.config({
+  virtual_lines = { current_line = true },
+})
