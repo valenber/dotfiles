@@ -258,12 +258,21 @@ keymap("n", "<leader>tt", OpenTerminal, options)
 vim.api.nvim_create_autocmd("BufEnter", {
   callback = function()
     local function find_project_root()
-      local markers = { ".git", "package.json", "tsconfig.json" }
+      -- First try to find .git (monorepo root)
       local current = vim.fn.expand("%:p:h")
+      while current ~= "/" do
+        if vim.fn.finddir(".git", current) ~= "" then
+          return current
+        end
+        current = vim.fn.fnamemodify(current, ":h")
+      end
 
+      -- If no .git found, try other markers
+      current = vim.fn.expand("%:p:h")
+      local markers = { "package.json", "tsconfig.json" }
       while current ~= "/" do
         for _, marker in ipairs(markers) do
-          if vim.fn.findfile(marker, current) ~= "" or vim.fn.finddir(marker, current) ~= "" then
+          if vim.fn.findfile(marker, current) ~= "" then
             return current
           end
         end
