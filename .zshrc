@@ -21,7 +21,9 @@ alias home="cd $HOME"
 alias gc="cd $HOME/code"
 alias vi="nvim"
 alias lg="lazygit"
-alias cd="z"
+if [[ $- == *i* ]]; then
+    alias cd="z"
+fi
 
 ## Git
 alias gs="git status --short"
@@ -42,9 +44,22 @@ export ZSH_HIGHLIGHT_HIGHLIGHTERS_DIR=/opt/homebrew/share/zsh-syntax-highlightin
 
 source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
+# pnpm support in volta
 export VOLTA_FEATURE_PNPM=1
+
+# faster prettier runs
+export PRETTIER_EXPERIMENTAL_CLI=1
 
 # prevent memory heap problems in node on large projects
 export NODE_OPTIONS="--max-old-space-size=8192"
 
 eval "$(zoxide init zsh)"
+
+alias claude="/Users/valentin.berlin/.claude/local/claude"
+
+# bun completions
+[ -s "/Users/valentin.berlin/.bun/_bun" ] && source "/Users/valentin.berlin/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
