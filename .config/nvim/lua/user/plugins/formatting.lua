@@ -13,12 +13,20 @@ return {
         handlebars = { "prettier" },
         css = { "prettier" },
         html = { "prettier" },
-        -- json = { "prettier" },
+        json = { "prettier" },
         yaml = { "prettier" },
         markdown = { "prettier" },
         graphql = { "prettier" },
         lua = { "stylua" },
         go = { "gofmt" },
+      },
+      formatters = {
+        prettier = {
+          -- Prettier 3.6.2 has a bug where --config-path doesn't work with stdin
+          -- Use tmpfile mode instead so prettier can discover config properly
+          stdin = false,
+          args = { "--write", "$FILENAME" },
+        },
       },
       format_on_save = {
         lsp_fallback = true,
@@ -27,12 +35,12 @@ return {
       },
     })
 
-    vim.keymap.set({ "n", "v" }, "<leader>cf", function()
+    vim.keymap.set({ "n" }, "<leader>cf", function()
       conform.format({
         lsp_fallback = true,
         async = false,
         timeout_ms = 1000,
       })
-    end, { desc = "Format file or range (in visual mode)" })
+    end, { desc = "Format file" })
   end,
 }
