@@ -21,6 +21,22 @@ return {
         { "^git@github%.com%-qonto:(.+)$", "https://github.com/%1" },
       },
     },
+    git = {
+      enabled = true,
+    },
+    styles = {
+      blame_line = {
+        width = 0.6,
+        height = 0.6,
+        border = "rounded",
+        title = " Git Blame ",
+        title_pos = "center",
+        ft = "git",
+        wo = {
+          winhighlight = "NormalFloat:Normal,FloatBorder:Normal",
+        },
+      },
+    },
   },
   keys = {
     {
@@ -39,6 +55,13 @@ return {
       end,
       desc = "Copy git URL to clipboard with line number",
       mode = { "n", "v" },
+    },
+    {
+      "<leader>gt",
+      function()
+        Snacks.git.blame_line()
+      end,
+      desc = "Git blame line",
     },
   },
 }
