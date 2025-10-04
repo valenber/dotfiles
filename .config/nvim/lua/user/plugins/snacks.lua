@@ -7,5 +7,11 @@ return {
       enabled = true,
       char = "┊",
     },
+    scroll = {
+      enabled = true,
+      animate = {
+        easing = "inOutCirc",
+      },
+    },
   },
 }
