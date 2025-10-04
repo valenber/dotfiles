@@ -22,7 +22,6 @@ return {
         "bash",
         "css",
         "dockerfile",
-        "go",
         "http",
         "javascript",
         "jsdoc",
