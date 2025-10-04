@@ -11,7 +11,6 @@ return {
       json = { "jsonlint" },
       lua = { "luacheck" },
       markdown = { "markdownlint" },
-      go = { "golangcilint" },
     }
 
     local lint_augroup = vim.api.nvim_create_augroup("lint", {
