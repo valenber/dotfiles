@@ -56,11 +56,6 @@ function ToggleTmuxZoom()
   vim.cmd("silent !tmux resize-pane -Z")
 end
 
-local function print_to_buf(buf, output)
-  local lines = type(output) == "string" and vim.split(output, "\n") or output
-  vim.api.nvim_buf_set_lines(buf, -1, -1, false, lines)
-end
-
 function CreateFloatingWindow(title)
   -- Create a new buffer for the floating window
   local buf = vim.api.nvim_create_buf(false, true)
