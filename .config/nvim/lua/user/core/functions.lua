@@ -109,6 +109,23 @@ keymap("n", "<leader>tt", OpenTerminal, options)
 
 vim.api.nvim_create_autocmd("BufEnter", {
   callback = function()
+    -- Skip special buffers (gitsigns, terminals, etc.)
+    local buftype = vim.bo.buftype
+    if buftype ~= "" then
+      return
+    end
+
+    -- Skip if buffer has no name
+    local bufname = vim.api.nvim_buf_get_name(0)
+    if bufname == "" then
+      return
+    end
+
+    -- Skip if the file doesn't exist (temporary/special buffers)
+    if vim.fn.filereadable(bufname) == 0 then
+      return
+    end
+
     local function find_project_root()
       local markers = { ".git", "package.json", "tsconfig.json" }
       local current = vim.fn.expand("%:p:h")
