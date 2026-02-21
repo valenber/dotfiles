@@ -12,6 +12,7 @@ return {
         typescriptreact = { "prettier" },
         handlebars = { "prettier" },
         css = { "prettier" },
+        scss = { "prettier" },
         html = { "prettier" },
         json = { "prettier" },
         yaml = { "prettier" },
@@ -28,7 +29,7 @@ return {
         },
       },
       format_on_save = {
-        lsp_fallback = true,
+        lsp_format = "fallback",
         async = false,
         timeout_ms = 1000,
       },
@@ -36,7 +37,7 @@ return {
 
     vim.keymap.set({ "n" }, "<leader>cf", function()
       conform.format({
-        lsp_fallback = true,
+        lsp_format = "fallback",
         async = false,
         timeout_ms = 1000,
       })

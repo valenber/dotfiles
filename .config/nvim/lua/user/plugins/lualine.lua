@@ -42,7 +42,7 @@ return {
         lualine_x = {
           {
             lint_progress,
-            cond = lazy_status.has_lint,
+            cond = function() return #lint.get_running() > 0 end,
             color = { fg = "#ff9e64" },
           },
           {

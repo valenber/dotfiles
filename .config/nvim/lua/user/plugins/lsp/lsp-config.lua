@@ -25,8 +25,10 @@ return {
     })
 
     -- Change the Diagnostic symbols in the sign column (gutter)
+    -- NOTE: these symbols are also used in lua/user/plugins/lualine.lua (lualine_c diagnostics)
     local signs = { Error = " ", Warn = " ", Hint = "󰠠 ", Info = " " }
 
+    -- NOTE: virtual_lines config is in lua/user/core/options.lua
     vim.diagnostic.config({
       signs = {
         text = {

@@ -16,6 +16,11 @@ return {
         ".eslintrc.cjs",
         ".eslintrc.json",
         "eslint.config.js",
+        "eslint.config.mjs",
+        "eslint.config.cjs",
+        "eslint.config.ts",
+        "eslint.config.mts",
+        "eslint.config.cts",
         "package.json"
       ),
     })

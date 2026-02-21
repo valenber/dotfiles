@@ -32,7 +32,9 @@ opt.completeopt = "menuone,noselect"
 
 -- search case insensitive esc
 opt.ignorecase = true
+opt.smartcase = true
 
+-- NOTE: diagnostic signs are configured in lua/user/plugins/lsp/lsp-config.lua
 vim.diagnostic.config({
   virtual_lines = { current_line = true },
 })

@@ -36,11 +36,11 @@ function ToggleBufferDiagnostics()
   end
 
   if diagnostics_enabled then
-    vim.diagnostic.disable(bufnr)
+    vim.diagnostic.enable(false, { bufnr = bufnr })
     diagnostics_enabled = false
     print("LSP diagnostics disabled")
   else
-    vim.diagnostic.enable(bufnr)
+    vim.diagnostic.enable(true, { bufnr = bufnr })
     diagnostics_enabled = true
     print("LSP diagnostics enabled")
   end

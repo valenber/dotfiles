@@ -1,4 +1,4 @@
-std = "min"
+std = "luajit"
 
 globals = {
   vim = true,
