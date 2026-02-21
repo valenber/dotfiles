@@ -147,3 +147,9 @@ vim.api.nvim_create_autocmd("BufEnter", {
     end
   end,
 })
+
+vim.keymap.set("n", "<leader>yl", function()
+  local path = vim.fn.expand("%")
+  vim.fn.setreg("+", path)
+  print("Copied: " .. path)
+end, { desc = "Copy relative path" })

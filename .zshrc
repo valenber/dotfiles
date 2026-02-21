@@ -1,5 +1,6 @@
 # Path to your Oh My Zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
+export EDITOR="nvim"
 
 ZSH_THEME="amuse"
 plugins=(git)
@@ -16,7 +17,7 @@ fi
 
 ## General
 alias ls="eza --icons=always -a"
-alias tree="eza --tree --ignore-glob='node_modules|.git'"
+alias tree="eza --tree --icons --ignore-glob='node_modules|.git'"
 alias home="cd $HOME"
 alias gc="cd $HOME/code"
 alias vi="nvim"
@@ -44,9 +45,6 @@ export ZSH_HIGHLIGHT_HIGHLIGHTERS_DIR=/opt/homebrew/share/zsh-syntax-highlightin
 
 source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
-# pnpm support in volta
-export VOLTA_FEATURE_PNPM=1
-
 # faster prettier runs
 export PRETTIER_EXPERIMENTAL_CLI=1
 
@@ -55,7 +53,6 @@ export NODE_OPTIONS="--max-old-space-size=8192"
 
 eval "$(zoxide init zsh)"
 
-alias claude="/Users/valentin.berlin/.claude/local/claude"
 
 # bun completions
 [ -s "/Users/valentin.berlin/.bun/_bun" ] && source "/Users/valentin.berlin/.bun/_bun"
@@ -63,3 +60,10 @@ alias claude="/Users/valentin.berlin/.claude/local/claude"
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
+
+# opencode
+export PATH=/Users/valentin.berlin/.opencode/bin:$PATH
+export PATH="$HOME/.local/bin:$PATH"
+
+VOLTA_HOME="$HOME/.volta"
+export PATH="$VOLTA_HOME/bin:$PATH"

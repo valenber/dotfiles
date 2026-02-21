@@ -20,6 +20,7 @@ keymap("n", "<C-k>", "<C-w>k")
 keymap("n", "<C-l>", "<C-w>l")
 keymap("n", "<leader>h", ":vertical resize -4<CR>", opts)
 keymap("n", "<leader>l", ":vertical resize +4<CR>", opts)
+
 -- Close the current buffer without closing the split
 keymap("n", "<leader>bd", ":bp<bar>sp<bar>bn<bar>bd<CR>", opts)
 
@@ -29,3 +30,6 @@ keymap("v", "<C-s>", ":sort<CR>", { silent = true })
 -- move visually over wrapped text
 keymap("n", "j", "gj", { silent = true })
 keymap("n", "k", "gk", { silent = true })
+
+-- dismiss noice messages
+keymap("n", "<leader>nd", ":NoiceDismiss<CR>", opts)
